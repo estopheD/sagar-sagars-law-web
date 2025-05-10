@@ -1,21 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
 import ChatBot from '../components/ChatBot';
-
 const Index = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center">
         {/* Hero Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1589216532372-1c2a367900d9?q=80&w=2671&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
-          <div className="absolute inset-0 bg-law-navy opacity-70"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1589216532372-1c2a367900d9?q=80&w=2671&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
+          <div className="absolute inset-0 opacity-70 bg-neutral-400"></div>
         </div>
         
         {/* Hero Content */}
@@ -56,11 +51,7 @@ const Index = () => {
           </div>
           <div className="relative">
             <div className="absolute -bottom-5 -left-5 w-64 h-64 bg-law-cream rounded-lg"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=3024&auto=format&fit=crop" 
-              alt="Law office" 
-              className="w-full h-auto rounded-lg shadow-xl relative z-10"
-            />
+            <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=3024&auto=format&fit=crop" alt="Law office" className="w-full h-auto rounded-lg shadow-xl relative z-10" />
           </div>
         </div>
       </section>
@@ -78,7 +69,9 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Practice Area 1 */}
             <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop")' }}></div>
+              <div className="h-40 bg-cover bg-center" style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop")'
+            }}></div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-serif font-semibold mb-3 text-law-navy">Litigation & General Practice</h3>
                 <p className="text-gray-700 mb-4">Representation before Supreme Court, High Courts, District Courts, and various specialized tribunals.</p>
@@ -93,7 +86,9 @@ const Index = () => {
             
             {/* Practice Area 2 */}
             <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2069&auto=format&fit=crop")' }}></div>
+              <div className="h-40 bg-cover bg-center" style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2069&auto=format&fit=crop")'
+            }}></div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-serif font-semibold mb-3 text-law-navy">Arbitration</h3>
                 <p className="text-gray-700 mb-4">Expert guidance in commercial disputes, financial matters, construction and engineering cases, and more.</p>
@@ -108,7 +103,9 @@ const Index = () => {
             
             {/* Practice Area 3 */}
             <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973&auto=format&fit=crop")' }}></div>
+              <div className="h-40 bg-cover bg-center" style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?q=80&w=1973&auto=format&fit=crop")'
+            }}></div>
               <CardContent className="p-6">
                 <h3 className="text-xl font-serif font-semibold mb-3 text-law-navy">Corporate & Commercial Services</h3>
                 <p className="text-gray-700 mb-4">Comprehensive legal support for businesses including company formation, advisory services, and due diligence.</p>
@@ -211,8 +208,6 @@ const Index = () => {
 
       {/* Chatbot */}
       <ChatBot />
-    </>
-  );
+    </>;
 };
-
 export default Index;
