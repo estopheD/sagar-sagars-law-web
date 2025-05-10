@@ -1,18 +1,13 @@
-
 const Career = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
-          <div className="absolute inset-0 bg-law-navy opacity-80"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
+          <div className="absolute inset-0 opacity-80 bg-zinc-600"></div>
         </div>
         
         {/* Content */}
@@ -38,8 +33,6 @@ const Career = () => {
           </p>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Career;
