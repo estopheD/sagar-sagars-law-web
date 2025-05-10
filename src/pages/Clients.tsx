@@ -1,17 +1,12 @@
-
 const Clients = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
           <div className="absolute inset-0 bg-law-navy opacity-80"></div>
         </div>
         
@@ -33,13 +28,61 @@ const Clients = () => {
           <h2 className="text-3xl font-serif font-semibold text-law-navy mb-8">
             Client Testimonials
           </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-            At Sagar & Sagar Law Offices, we've had the privilege of serving diverse clients across various sectors. Our clients page is currently under development. Please check back soon for client testimonials and success stories.
-          </p>
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto"> Our Esteemed Clients:
+
+A representative list of our esteemed clients who have been counseled by our lawyers:
+
+South Delhi Municipal Corporation
+Gail India Ltd.
+Gail Gas Ltd.
+Bharat Petroleum Corporation Ltd.
+Brahmaputra Crackers & Polymers Ltd.
+SIDBI
+Punjab And Sind Bank
+Bank Of Baroda
+Union Bank Of India
+HDFC Bank Ltd.
+Dena Bank
+Volkswagon Finace Pvt Ltd.
+Audi India
+Birla Home Finance
+Future Money India
+Anjali Leasing and Financials
+Citibank & Citigroup International
+Crompton Greaves Ltd.
+State Bank of India
+Oriental Bank of Commerce
+Shubham Housing Finance
+Capital First
+Capital Float
+Municipal Corporation of Delhi
+
+Walmart India Ltd.
+Bharti Retail Limited.
+Hindustan Unilever Limited.
+Ricoh India Ltd.
+Bata India Ltd.
+Standard Chartered Bank
+Shalimar Paints Ltd.
+Bank Of Nova Scotia
+Jorjy International Pvt. Ltd.
+Modern Foods Ltd.
+Devson Steels India Ltd.
+BCPL
+Asian Paints
+Mitsui & Company
+Tata Power
+Fullerton India Ltd.
+Pearl Minerals Ltd.
+Bellisimo Italy.
+Delhi Develoment Authority
+India Infoline
+Tata Capital Housing
+Aditya Birla Housing Finance
+PMLA Authorities in courts
+and many others</p>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Clients;
