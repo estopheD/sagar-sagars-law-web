@@ -1,18 +1,13 @@
-
 const Practice = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1575505586569-646b2ca898fc?q=80&w=2105&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
-          <div className="absolute inset-0 bg-law-navy opacity-80"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1575505586569-646b2ca898fc?q=80&w=2105&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
+          <div className="absolute inset-0 opacity-80 bg-zinc-600"></div>
         </div>
         
         {/* Content */}
@@ -41,11 +36,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1974&auto=format&fit=crop" 
-                  alt="Litigation" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1589578527966-fdac0f44566c?q=80&w=1974&auto=format&fit=crop" alt="Litigation" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -145,11 +136,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" 
-                  alt="Arbitration" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop" alt="Arbitration" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -207,11 +194,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" 
-                  alt="Labour & Service Law" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" alt="Labour & Service Law" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -263,11 +246,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1949&auto=format&fit=crop" 
-                  alt="Corporate & Commercial Services" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1949&auto=format&fit=crop" alt="Corporate & Commercial Services" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -325,11 +304,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop" 
-                  alt="Property & Real Estate" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop" alt="Property & Real Estate" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -375,11 +350,7 @@ const Practice = () => {
             
             <div className="grid md:grid-cols-3 gap-10 mt-8">
               <div className="md:col-span-1">
-                <img 
-                  src="https://images.unsplash.com/photo-1452457750107-cd084dce177d?q=80&w=2080&auto=format&fit=crop" 
-                  alt="Consumer Protection" 
-                  className="w-full h-auto rounded-lg shadow-md"
-                />
+                <img src="https://images.unsplash.com/photo-1452457750107-cd084dce177d?q=80&w=2080&auto=format&fit=crop" alt="Consumer Protection" className="w-full h-auto rounded-lg shadow-md" />
               </div>
               
               <div className="md:col-span-2">
@@ -484,8 +455,6 @@ const Practice = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Practice;
