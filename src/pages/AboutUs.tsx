@@ -1,20 +1,14 @@
-
 import { Link } from 'react-router-dom';
-
 const AboutUs = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=3024&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
-          <div className="absolute inset-0 bg-law-navy opacity-80"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1589391886645-d51941baf7fb?q=80&w=3024&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
+          <div className="absolute inset-0 opacity-80 bg-neutral-600"></div>
         </div>
         
         {/* Content */}
@@ -164,8 +158,6 @@ const AboutUs = () => {
           </Link>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default AboutUs;
