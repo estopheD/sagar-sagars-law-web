@@ -1,20 +1,14 @@
-
 import { Link } from 'react-router-dom';
-
 const Services = () => {
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
-          <div className="absolute inset-0 bg-law-navy opacity-80"></div>
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
+          <div className="absolute inset-0 opacity-80 bg-zinc-600"></div>
         </div>
         
         {/* Content */}
@@ -43,8 +37,6 @@ const Services = () => {
           </Link>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Services;
