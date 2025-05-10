@@ -7,7 +7,7 @@ const Clients = () => {
         backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop")',
         backgroundBlendMode: 'overlay'
       }}>
-          <div className="absolute inset-0 bg-law-navy opacity-80"></div>
+          <div className="absolute inset-0 opacity-80 bg-zinc-600"></div>
         </div>
         
         {/* Content */}
