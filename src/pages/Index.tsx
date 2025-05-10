@@ -1,6 +1,6 @@
-
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from "@/components/ui/card";
+import ChatBot from '../components/ChatBot';
 
 const Index = () => {
   return (
@@ -208,6 +208,9 @@ const Index = () => {
           </Link>
         </div>
       </section>
+
+      {/* Chatbot */}
+      <ChatBot />
     </>
   );
 };
