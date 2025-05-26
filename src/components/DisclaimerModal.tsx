@@ -27,7 +27,7 @@ const DisclaimerModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" hideCloseButton>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto [&>button]:hidden">
         <DialogHeader className="text-center">
           <DialogTitle className="text-2xl font-serif text-law-navy mb-4">
             DISCLAIMER
