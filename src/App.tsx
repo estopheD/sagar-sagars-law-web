@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import DisclaimerModal from "./components/DisclaimerModal";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Practice from "./pages/Practice";
@@ -24,6 +25,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
+          <DisclaimerModal />
           <Navbar />
           <main className="flex-grow">
             <Routes>
