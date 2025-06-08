@@ -1,11 +1,9 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { MapPin, Phone, Mail } from "lucide-react";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,25 +12,29 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // In a real application, this would send the data to a server
     console.log('Form submitted:', formData);
-    
+
     // Show success message
     toast({
       title: "Message Sent",
       description: "Thank you for contacting us. We will get back to you soon.",
-      duration: 5000,
+      duration: 5000
     });
-    
+
     // Reset form
     setFormData({
       name: '',
@@ -42,19 +44,14 @@ const Contact = () => {
       message: ''
     });
   };
-
-  return (
-    <>
+  return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
         {/* Background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0" 
-          style={{ 
-            backgroundImage: 'url("https://images.unsplash.com/photo-1560264280-88b68371db39?q=80&w=2070&auto=format&fit=crop")', 
-            backgroundBlendMode: 'overlay',
-          }}
-        >
+        <div className="absolute inset-0 bg-cover bg-center z-0" style={{
+        backgroundImage: 'url("https://images.unsplash.com/photo-1560264280-88b68371db39?q=80&w=2070&auto=format&fit=crop")',
+        backgroundBlendMode: 'overlay'
+      }}>
           <div className="absolute inset-0 bg-law-navy opacity-80"></div>
         </div>
         
@@ -164,10 +161,10 @@ const Contact = () => {
                   Phone Numbers
                 </h4>
                 <ul className="space-y-2 text-gray-700">
-                  <li><a href="tel:+911122377840" className="hover:text-law-gold transition-colors">+91-11-22377840</a></li>
-                  <li><a href="tel:+911122375422" className="hover:text-law-gold transition-colors">+91-11-22375422</a></li>
+                  
+                  
                   <li><a href="tel:+911147543981" className="hover:text-law-gold transition-colors">+91-11-47543981</a></li>
-                  <li><a href="tel:+911122374682" className="hover:text-law-gold transition-colors">+91-11-22374682</a></li>
+                  
                   <li><a href="tel:+919811016162" className="hover:text-law-gold transition-colors">+91-9811016162</a></li>
                   <li><a href="tel:+919810021846" className="hover:text-law-gold transition-colors">+91-9810021846</a></li>
                   <li><a href="tel:+919561980557" className="hover:text-law-gold transition-colors">+91-9561980557</a></li>
@@ -236,31 +233,14 @@ const Contact = () => {
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                       Name *
                     </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full"
-                      placeholder="Your Name"
-                    />
+                    <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full" placeholder="Your Name" />
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                       Email *
                     </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full"
-                      placeholder="Your Email"
-                    />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="w-full" placeholder="Your Email" />
                   </div>
                 </div>
                 
@@ -269,29 +249,14 @@ const Contact = () => {
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                       Phone Number
                     </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full"
-                      placeholder="Your Phone Number"
-                    />
+                    <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full" placeholder="Your Phone Number" />
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
                       Subject *
                     </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full"
-                      placeholder="Message Subject"
-                    />
+                    <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full" placeholder="Message Subject" />
                   </div>
                 </div>
                 
@@ -299,21 +264,10 @@ const Contact = () => {
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                     Message *
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full h-32"
-                    placeholder="How can we help you?"
-                  />
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required className="w-full h-32" placeholder="How can we help you?" />
                 </div>
                 
-                <Button 
-                  type="submit" 
-                  className="w-full bg-law-navy hover:bg-opacity-90 text-white font-medium py-3"
-                >
+                <Button type="submit" className="w-full bg-law-navy hover:bg-opacity-90 text-white font-medium py-3">
                   Send Message
                 </Button>
               </form>
@@ -343,8 +297,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default Contact;
