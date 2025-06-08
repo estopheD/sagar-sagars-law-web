@@ -76,15 +76,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white border-b border-law-gold pb-2 inline-block">Contact Us</h3>
             <address className="not-italic text-gray-300">
-              <p className="mb-2">123 Legal Avenue</p>
-              <p className="mb-2">New Delhi, 110001</p>
-              <p className="mb-2">India</p>
+              <p className="mb-3 font-medium text-white">New Delhi Office:</p>
+              <p className="mb-1">18, Hargobind Enclave,</p>
+              <p className="mb-1">Bhartendu Harish Chandra Marg,</p>
+              <p className="mb-3">Delhi - 110092</p>
+              
               <p className="mb-2">
-                <a href="tel:+911234567890" className="hover:text-law-gold transition-colors">+91 123 456 7890</a>
+                <span className="font-medium text-white">Phone:</span><br />
+                <a href="tel:+911147543981" className="hover:text-law-gold transition-colors">+91-11-47543981</a>
               </p>
-              <p>
-                <a href="mailto:info@sagarandsagar.com" className="hover:text-law-gold transition-colors">info@sagarandsagar.com</a>
-              </p>
+              
+              <div>
+                <span className="font-medium text-white">Email:</span><br />
+                <a href="mailto:info@sagarandsagar.in" className="hover:text-law-gold transition-colors block">info@sagarandsagar.in</a>
+                <a href="mailto:rajiv.sagar1@gmail.com" className="hover:text-law-gold transition-colors block">rajiv.sagar1@gmail.com</a>
+              </div>
             </address>
           </div>
         </div>
