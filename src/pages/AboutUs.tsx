@@ -27,9 +27,7 @@ const AboutUs = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            <p className="text-lg mb-6">
-              Established in 1998, Sagar & Sagar Law Offices has been delivering trusted legal counsel and representation for over two decades. Founded by Mr. Rajeev Sagar, a respected legal professional with a deep commitment to justice, and Mr. Sanjiv Sagar, a practicing Senior Advocate at the Delhi High Court, the firm has built its reputation on integrity, dedication, and results.
-            </p>
+            <p className="text-lg mb-6">Started It's foundation in 1998, Sagar &amp; Sagar Law Offices has been delivering trusted legal counsel and representation for over two decades. Founded by Mr. Rajeev Sagar, a respected legal professional with a deep commitment to justice, and Mr. Sanjiv Sagar, a practicing Senior Advocate at the Delhi High Court, the firm has built its reputation on integrity, dedication, and results.</p>
             
             <p className="text-lg mb-6">
               With a strong foundation in litigation, legal consulting, and client advocacy, Sagar & Sagar has grown into a full-service law firm with a wide-ranging practice that includes civil, criminal, corporate, arbitration, real estate, labor, consumer protection, and intellectual property law.
