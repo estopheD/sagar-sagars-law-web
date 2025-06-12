@@ -12,6 +12,9 @@ const DisclaimerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    // Clear any existing disclaimer agreement for fresh testing
+    localStorage.removeItem('sagarSagarDisclaimer');
+    
     // Add a small delay to ensure the component is fully mounted
     const timer = setTimeout(() => {
       // Check if user has already agreed to disclaimer
@@ -21,7 +24,7 @@ const DisclaimerModal = () => {
         setIsOpen(true);
         console.log('Opening disclaimer modal'); // Debug log
       }
-    }, 100);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -33,7 +36,7 @@ const DisclaimerModal = () => {
     setIsOpen(false);
   };
 
-  // Add reset function for testing (can be removed in production)
+  // Add reset function for testing
   const resetDisclaimer = () => {
     localStorage.removeItem('sagarSagarDisclaimer');
     setIsOpen(true);
@@ -43,11 +46,13 @@ const DisclaimerModal = () => {
   useEffect(() => {
     // @ts-ignore - For debugging only
     window.showDisclaimer = resetDisclaimer;
+    // @ts-ignore - For debugging only  
+    window.clearDisclaimer = () => localStorage.removeItem('sagarSagarDisclaimer');
   }, []);
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:max-w-[90vw] md:max-w-2xl">
+    <Dialog open={isOpen} onOpenChange={() => {}}>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:max-w-[90vw] md:max-w-2xl [&>button]:hidden">
         <DialogHeader className="text-center">
           <DialogTitle className="text-2xl font-serif text-law-navy mb-4">
             DISCLAIMER
