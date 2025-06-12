@@ -1,32 +1,44 @@
 
 import { CheckCircle } from 'lucide-react';
+import { memo } from 'react';
+
+const services = [
+  "Service & Labour cases",
+  "Domestic enquires conducting",
+  "Lok adalats and conciliation activities",
+  "Labour conciliation cases",
+  "Securitization Matters (SARFAESI)",
+  "Due Diligence",
+  "Property Title Search",
+  "Debt Recovery Tribunal Matters",
+  "Legal Counseling",
+  "Commercial and Corporate Advisory Services",
+  "Company formation and Administration",
+  "Arbitration cases",
+  "International Commercial Arbitration",
+  "Consumer cases",
+  "ROC Search of companies",
+  "Privacy Law",
+  "Financial cases",
+  "Criminal cases",
+  "Property Verification",
+  "Project Counseling",
+  "Intellectual Property",
+  "Joint Ventures"
+];
+
+const ServiceItem = memo(({ service, index }: { service: string; index: number }) => (
+  <div 
+    className="flex items-start space-x-3 p-4 bg-law-cream rounded-lg border border-law-light-gray hover:shadow-md transition-shadow duration-300"
+  >
+    <CheckCircle className="w-5 h-5 text-law-gold mt-1 flex-shrink-0" />
+    <span className="text-law-charcoal font-medium leading-relaxed">{service}</span>
+  </div>
+));
+
+ServiceItem.displayName = 'ServiceItem';
 
 const Services = () => {
-  const services = [
-    "Service & Labour cases",
-    "Domestic enquires conducting",
-    "Lok adalats and conciliation activities",
-    "Labour conciliation cases",
-    "Securitization Matters (SARFAESI)",
-    "Due Diligence",
-    "Property Title Search",
-    "Debt Recovery Tribunal Matters",
-    "Legal Counseling",
-    "Commercial and Corporate Advisory Services",
-    "Company formation and Administration",
-    "Arbitration cases",
-    "International Commercial Arbitration",
-    "Consumer cases",
-    "ROC Search of companies",
-    "Privacy Law",
-    "Financial cases",
-    "Criminal cases",
-    "Property Verification",
-    "Project Counseling",
-    "Intellectual Property",
-    "Joint Ventures"
-  ];
-
   return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
@@ -68,13 +80,7 @@ const Services = () => {
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <div 
-                key={index}
-                className="flex items-start space-x-3 p-4 bg-law-cream rounded-lg border border-law-light-gray hover:shadow-md transition-shadow duration-300"
-              >
-                <CheckCircle className="w-5 h-5 text-law-gold mt-1 flex-shrink-0" />
-                <span className="text-law-charcoal font-medium leading-relaxed">{service}</span>
-              </div>
+              <ServiceItem key={service} service={service} index={index} />
             ))}
           </div>
 

@@ -1,5 +1,4 @@
-
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Send, X, User, Bot, Phone, Mail, MapPin, Clock } from "lucide-react";
@@ -30,42 +29,62 @@ const ChatBot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [quickActions, setQuickActions] = useState<QuickAction[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { toast } = useToast();
   
-  useEffect(() => {
+  const scrollToBottom = useCallback(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, isTyping]);
+  }, []);
 
   useEffect(() => {
-    // Show initial quick actions after welcome message
-    if (messages.length === 1) {
-      setQuickActions([
-        { label: "Our Services", action: () => handleQuickAction("What services do you offer?") },
-        { label: "Contact Info", action: () => handleQuickAction("contact") },
-        { label: "Office Hours", action: () => handleQuickAction("office hours") },
-        { label: "Legal Help", action: () => handleQuickAction("I need legal help") }
-      ]);
-    }
-  }, [messages]);
+    scrollToBottom();
+  }, [messages, isTyping, scrollToBottom]);
 
-  const handleQuickAction = (query: string) => {
+  const initialQuickActions = useMemo(() => [
+    { label: "Our Services", action: () => handleQuickAction("What services do you offer?") },
+    { label: "Contact Info", action: () => handleQuickAction("contact") },
+    { label: "Office Hours", action: () => handleQuickAction("office hours") },
+    { label: "Legal Help", action: () => handleQuickAction("I need legal help") }
+  ], []);
+
+  useEffect(() => {
+    if (messages.length === 1) {
+      setQuickActions(initialQuickActions);
+    }
+  }, [messages.length, initialQuickActions]);
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleQuickAction = useCallback((query: string) => {
     setInput('');
     setQuickActions([]);
     setMessages(prev => [...prev, { content: query, sender: 'user', timestamp: new Date() }]);
     
-    setTimeout(() => {
+    setIsTyping(true);
+    
+    // Clear any existing timeout
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+    
+    typingTimeoutRef.current = setTimeout(() => {
       const response = generateResponse(query);
       setIsTyping(false);
       setMessages(prev => [...prev, { content: response, sender: 'bot', timestamp: new Date() }]);
     }, 1000);
-    
-    setIsTyping(true);
-  };
+  }, []);
 
-  const handleSendMessage = () => {
-    if (input.trim() === '') return;
+  const handleSendMessage = useCallback(() => {
+    if (input.trim() === '' || isTyping) return;
     
     const userMessage = input.trim();
     setMessages(prev => [...prev, { content: userMessage, sender: 'user', timestamp: new Date() }]);
@@ -73,14 +92,19 @@ const ChatBot: React.FC = () => {
     setInput('');
     setIsTyping(true);
     
-    setTimeout(() => {
+    // Clear any existing timeout
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+    
+    typingTimeoutRef.current = setTimeout(() => {
       const response = generateResponse(userMessage);
       setIsTyping(false);
       setMessages(prev => [...prev, { content: response, sender: 'bot', timestamp: new Date() }]);
     }, 1000);
-  };
+  }, [input, isTyping]);
 
-  const generateResponse = (userInput: string): string | React.ReactNode => {
+  const generateResponse = useCallback((userInput: string): string | React.ReactNode => {
     const lowercaseInput = userInput.toLowerCase();
     
     // Contact Information
@@ -258,36 +282,42 @@ const ChatBot: React.FC = () => {
     }
 
     // Default response with helpful options
-    setQuickActions([
+    const defaultQuickActions = [
       { label: "Our Services", action: () => handleQuickAction("What services do you offer?") },
       { label: "Contact Info", action: () => handleQuickAction("contact") },
       { label: "Schedule Meeting", action: () => handleQuickAction("appointment") },
       { label: "Legal Help", action: () => handleQuickAction("I need legal help") }
-    ]);
+    ];
+
+    setQuickActions(defaultQuickActions);
 
     return "I'm here to help with your legal needs. I can provide information about our services, contact details, office hours, or general legal guidance. Please select from the options below or feel free to ask me anything.";
-  };
+  }, [handleQuickAction]);
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
     }
-  };
+  }, [handleSendMessage]);
+
+  const toggleChat = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {!isOpen ? (
         <Button 
-          onClick={() => setIsOpen(true)}
-          className="h-14 w-14 rounded-full bg-law-gold hover:bg-law-gold/90 shadow-lg"
+          onClick={toggleChat}
+          className="h-14 w-14 rounded-full bg-law-gold hover:bg-law-gold/90 shadow-lg transition-all duration-200 hover:scale-105"
           size="icon"
           aria-label="Open legal assistant chat"
         >
           <MessageCircle className="h-6 w-6" />
         </Button>
       ) : (
-        <div className="bg-white rounded-lg shadow-xl flex flex-col w-80 h-96 border border-gray-200">
+        <div className="bg-white rounded-lg shadow-xl flex flex-col w-80 h-96 border border-gray-200 animate-in slide-in-from-bottom-2 duration-200">
           {/* Header */}
           <div className="bg-law-navy text-white p-3 rounded-t-lg flex justify-between items-center">
             <div className="font-semibold flex items-center gap-2">
@@ -297,7 +327,7 @@ const ChatBot: React.FC = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              onClick={() => setIsOpen(false)}
+              onClick={toggleChat}
               className="h-8 w-8 text-white hover:bg-law-navy/50"
             >
               <X className="h-5 w-5" />
@@ -308,7 +338,7 @@ const ChatBot: React.FC = () => {
           <div className="flex-1 overflow-y-auto p-3 space-y-3">
             {messages.map((message, index) => (
               <div 
-                key={index} 
+                key={`${message.timestamp.getTime()}-${index}`}
                 className={`flex gap-2 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {message.sender === 'bot' && (
@@ -321,7 +351,7 @@ const ChatBot: React.FC = () => {
                     message.sender === 'user' 
                       ? 'bg-law-gold text-white ml-8' 
                       : 'bg-gray-100 text-gray-800 mr-8'
-                  } rounded-lg px-3 py-2 max-w-[80%] text-sm`}
+                  } rounded-lg px-3 py-2 max-w-[80%] text-sm break-words`}
                 >
                   {message.content}
                 </div>
@@ -360,6 +390,7 @@ const ChatBot: React.FC = () => {
                     key={index}
                     onClick={action.action}
                     className="text-xs px-2 py-1 bg-law-cream text-law-navy rounded hover:bg-law-gold hover:text-white transition-colors"
+                    disabled={isTyping}
                   >
                     {action.label}
                   </button>
@@ -377,6 +408,7 @@ const ChatBot: React.FC = () => {
               placeholder="Ask about our legal services..."
               className="flex-1 text-sm"
               disabled={isTyping}
+              maxLength={500}
             />
             <Button 
               onClick={handleSendMessage}

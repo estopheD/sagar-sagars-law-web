@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import DisclaimerModal from "./components/DisclaimerModal";
+import ChatBot from "./components/ChatBot";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Practice from "./pages/Practice";
@@ -16,7 +17,15 @@ import Career from "./pages/Career";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      retry: 3,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -40,6 +49,7 @@ const App = () => (
             </Routes>
           </main>
           <Footer />
+          <ChatBot />
         </div>
       </BrowserRouter>
     </TooltipProvider>
