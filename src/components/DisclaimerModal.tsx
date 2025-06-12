@@ -12,22 +12,42 @@ const DisclaimerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Check if user has already agreed to disclaimer
-    const hasAgreed = localStorage.getItem('sagarSagarDisclaimer');
-    if (!hasAgreed) {
-      setIsOpen(true);
-    }
+    // Add a small delay to ensure the component is fully mounted
+    const timer = setTimeout(() => {
+      // Check if user has already agreed to disclaimer
+      const hasAgreed = localStorage.getItem('sagarSagarDisclaimer');
+      console.log('Disclaimer check:', hasAgreed); // Debug log
+      if (!hasAgreed) {
+        setIsOpen(true);
+        console.log('Opening disclaimer modal'); // Debug log
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleAgree = () => {
+    console.log('User agreed to disclaimer'); // Debug log
     // Store agreement in localStorage
     localStorage.setItem('sagarSagarDisclaimer', 'true');
     setIsOpen(false);
   };
 
+  // Add reset function for testing (can be removed in production)
+  const resetDisclaimer = () => {
+    localStorage.removeItem('sagarSagarDisclaimer');
+    setIsOpen(true);
+  };
+
+  // Debug: Add a way to show the modal for testing
+  useEffect(() => {
+    // @ts-ignore - For debugging only
+    window.showDisclaimer = resetDisclaimer;
+  }, []);
+
   return (
-    <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto [&>button]:hidden">
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto sm:max-w-[90vw] md:max-w-2xl">
         <DialogHeader className="text-center">
           <DialogTitle className="text-2xl font-serif text-law-navy mb-4">
             DISCLAIMER
