@@ -85,7 +85,7 @@ ${formData.name}`);
           <h2 className="text-3xl font-serif font-semibold text-law-navy mb-8">
             Work With Us
           </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">At Sagar & Sagar Law Offices, we're always looking for talented legal professionals to join our team. Please contact us using the contact information provided below and get in touch wit</p>
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">At Sagar &amp; Sagar Law Offices, we're always looking for talented legal professionals to join our team. Please contact us using the contact information provided below and get in touch with us.</p>
         </div>
       </section>
 
