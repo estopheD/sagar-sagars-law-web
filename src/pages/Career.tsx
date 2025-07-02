@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
-
 const Career = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,22 +11,22 @@ const Career = () => {
     subject: '',
     message: ''
   });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
+    const {
+      name,
+      value
+    } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Construct the Gmail compose URL with pre-filled data
     const gmailSubject = encodeURIComponent(`Career Inquiry: ${formData.subject}`);
-    const gmailBody = encodeURIComponent(
-      `Dear Sagar & Sagar Team,
+    const gmailBody = encodeURIComponent(`Dear Sagar & Sagar Team,
 
 My name is ${formData.name} and I am interested in career opportunities at your firm.
 
@@ -43,14 +41,12 @@ Message:
 ${formData.message}
 
 Best regards,
-${formData.name}`
-    );
-    
+${formData.name}`);
     const gmailUrl = `https://mail.google.com/mail/?view=cm&to=info@sagarandsagar.in&su=${gmailSubject}&body=${gmailBody}`;
-    
+
     // Open Gmail in a new tab
     window.open(gmailUrl, '_blank');
-    
+
     // Reset form
     setFormData({
       name: '',
@@ -60,7 +56,6 @@ ${formData.name}`
       message: ''
     });
   };
-
   return <>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20">
@@ -90,9 +85,7 @@ ${formData.name}`
           <h2 className="text-3xl font-serif font-semibold text-law-navy mb-8">
             Work With Us
           </h2>
-          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">
-            At Sagar & Sagar Law Offices, we're always looking for talented legal professionals to join our team. Our careers page is currently under development. Please check back soon for job openings and information about working with us.
-          </p>
+          <p className="text-lg text-gray-700 mb-8 max-w-3xl mx-auto">At Sagar & Sagar Law Offices, we're always looking for talented legal professionals to join our team. Please contact us using the contact information provided below and get in touch wit</p>
         </div>
       </section>
 
@@ -159,31 +152,14 @@ ${formData.name}`
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                       Full Name *
                     </label>
-                    <Input 
-                      id="name" 
-                      name="name" 
-                      value={formData.name} 
-                      onChange={handleChange} 
-                      required 
-                      className="w-full" 
-                      placeholder="Your Full Name" 
-                    />
+                    <Input id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full" placeholder="Your Full Name" />
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                       Email Address *
                     </label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={handleChange} 
-                      required 
-                      className="w-full" 
-                      placeholder="your.email@example.com" 
-                    />
+                    <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required className="w-full" placeholder="your.email@example.com" />
                   </div>
                 </div>
                 
@@ -192,29 +168,14 @@ ${formData.name}`
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                       Phone Number
                     </label>
-                    <Input 
-                      id="phone" 
-                      name="phone" 
-                      value={formData.phone} 
-                      onChange={handleChange} 
-                      className="w-full" 
-                      placeholder="+91-XXXXXXXXXX" 
-                    />
+                    <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="w-full" placeholder="+91-XXXXXXXXXX" />
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
                       Subject *
                     </label>
-                    <Input 
-                      id="subject" 
-                      name="subject" 
-                      value={formData.subject} 
-                      onChange={handleChange} 
-                      required 
-                      className="w-full" 
-                      placeholder="e.g., Internship Opportunity, Associate Position" 
-                    />
+                    <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full" placeholder="e.g., Internship Opportunity, Associate Position" />
                   </div>
                 </div>
                 
@@ -222,21 +183,10 @@ ${formData.name}`
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700">
                     Message *
                   </label>
-                  <Textarea 
-                    id="message" 
-                    name="message" 
-                    value={formData.message} 
-                    onChange={handleChange} 
-                    required 
-                    className="w-full h-32" 
-                    placeholder="Tell us about your background, experience, and why you're interested in joining our team..." 
-                  />
+                  <Textarea id="message" name="message" value={formData.message} onChange={handleChange} required className="w-full h-32" placeholder="Tell us about your background, experience, and why you're interested in joining our team..." />
                 </div>
                 
-                <Button 
-                  type="submit" 
-                  className="w-full bg-law-navy hover:bg-opacity-90 text-white font-medium py-3"
-                >
+                <Button type="submit" className="w-full bg-law-navy hover:bg-opacity-90 text-white font-medium py-3">
                   Send Message via Gmail
                 </Button>
               </form>
@@ -246,5 +196,4 @@ ${formData.name}`
       </section>
     </>;
 };
-
 export default Career;
